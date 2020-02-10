@@ -1,0 +1,15 @@
+{% load vstatic %}
+
+
+<div id="profile-header" v-cloak>
+    <div v-if="profile" style="font-weight: 500;">{[profile.fullname]}</div>
+    <template v-if="authUser && authUser.username != username">
+        <button v-if="isFollowing" v-on:click="follow(false)" class="btn main-btn">
+            Seguindo
+        </button>
+        <button v-else v-on:click="follow(true)" class="btn main-btn">
+            Seguir
+        </button>
+    </template>
+</div>
+<script src="{% vstatic 'js/user/profileHeader.js' %}"></script>

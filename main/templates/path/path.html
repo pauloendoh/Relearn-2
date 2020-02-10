@@ -1,0 +1,16 @@
+{% extends "index.html" %}
+{% load vstatic %}
+
+{% block body %}
+<script src="{% vstatic 'js/components/linkSummaryComponent.js' %}"></script>
+<div class="container mt-6">
+    <div class="row">
+        <!-- <div class="col-lg-3"></div> -->
+        <div class="col-lg-8">
+            {% include 'path/seeLater.html' %}
+        </div>
+        <div class="col-lg-4"></div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,150 @@
+{% load static %}
+{% load vstatic %}
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="initial-scale=1, shrink-to-fit=no, width=device-width" name="viewport">
+    <title>{% block title %}Relearn{% endblock %}</title>
+    <link rel="shortcut icon" href="#">
+
+    <!-- Font Awesome -->
+    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.css" rel="stylesheet"> -->
+    <link href="{% vstatic 'libs/css/fontawesome.css' %}" rel="stylesheet">
+
+    <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+        </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+        </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+        </script>
+
+    <!-- Vue.js  -->
+    <script src="{% vstatic 'libs/js/vueDevelopment.js' %}"></script>
+
+    <!-- UTILS.JS -->
+    <script src="{% vstatic 'js/utils.js' %}"></script>
+    <script src="{% vstatic 'js/components/auto-textarea.js' %}"></script>
+    <script src="{% vstatic 'js/components/star-ratings.js' %}"></script>
+    <!-- <script src="{% static 'libs/js/vueProduction.js' %}"></script> -->
+
+    <!-- Custom CSS -->
+    <link href="{% vstatic 'css/relearn.css' %}" rel="stylesheet">
+    <!-- <link href="{% static 'libs/css/custombootstrap.css' %}" rel="stylesheet">  -->
+
+    <!-- URLs -->
+    {% include 'urls.html' %}
+
+    <script>
+        var authUser = null;
+        var csrfmiddlewaretoken = "{{ csrf_token }}"
+    </script>
+
+    {% if request.user.is_authenticated %}
+    <script>
+        authUser = {
+            id: Number('{{ request.user.id }}'),
+            username: '{{ request.user.username }}'
+        }
+    </script>
+    {% endif %}
+</head>
+
+<body>
+    {% include 'index/navbar.html' %}
+
+    {% block body %}
+    <div class="container mt-6">
+        <div class="row mt-5">
+            <!-- <div class="col-lg-3"></div> -->
+            <div class="col-lg-8">
+                {% include 'index/statusFeed.html' %}
+            </div>
+            <div class="col-lg-4"></div>
+        </div>
+    </div>
+    {% endblock %}
+
+    <!-- PUT THIS INSIDE ANOTHER TEMPLATE -->
+    {% comment %} AUTH MODAL {% endcomment %}
+    <div id="auth-modal" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content br-2">
+                <div style="text-align: center;">
+                    <div class="modal-title" style="font-size: 40px;">Relearn</div>
+                    <div>Avalie seus estudos online</div>
+                </div>
+                <div class="modal-body">
+                    <a href="{% url 'social:begin' 'google-oauth2' %}" class="btn google-btn">
+                        <img src="{% vstatic 'img/google-icon.png' %}" />
+
+                        <div class="text">
+                            Entrar com Google
+                        </div>
+
+                    </a>
+                    <div class="my-3 font-weight-bold">
+                        OU
+                    </div>
+                    <ul v-if="errors">
+                        <li v-for="(value, key) in errors">
+                            <template v-if="key == '__all__'">
+                                {[value]}
+                            </template>
+                            <template v-else>
+                                {[key]} - {[value]}
+                            </template>
+                        </li>
+                    </ul>
+
+                    <template v-if="loginIsShowing">
+                        <form id="login-form" v-on:submit.prevent="login">
+                            {% csrf_token %}
+                            <input v-model="username" name="username" class="form-control mt-0"
+                                placeholder="Usuário ou email">
+                            <input v-model="password" name="password" class="form-control" type="password" class="form"
+                                placeholder="Senha">
+                            <input type="submit" value="Entrar" class="btn">
+                        </form>
+                        <div v-on:click="loginIsShowing = false" class="change-auth">
+                            Não possui conta? Registre-se
+                        </div>
+                    </template>
+                    <template v-else>
+                        <form id="signup-form" v-on:submit.prevent="signUp">
+                            <input v-model="email" type="email" class="form-control mt-0" placeholder="Email">
+                            <input v-model="password" type="password" class="form-control" placeholder="Senha">
+                            <input type="submit" value="Registrar" class="btn">
+                        </form>
+                        <div v-on:click="loginIsShowing = true" class="change-auth">
+                            Já possui conta? Entre
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{% vstatic 'js/authModal.js' %}"></script>
+
+    <!-- USER RESOURCE MODAL -->
+    {% if request.user.is_authenticated %}
+    {% include 'index/addResourceModal.html' %}
+    {% endif %}
+
+    <div id="corner-message-app">
+        <transition name="fade">
+            <div id="corner-message" v-if="message" v-html="message">
+            </div>
+        </transition>
+    </div>
+    <script src="{% vstatic 'js/cornerMessage.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+{% load vstatic %}
+
+<script src="{% vstatic 'js/components/statusComponent.js' %}"></script>
+
+<div id="user-timeline">
+    <user-link v-for="rating in ratings" v-bind:user-link="rating" :key="rating.id" :auth-user="authUser" class="mb-3">
+    </user-link>
+</div>
+<script src="{% vstatic 'js/user/timeline.js' %}"></script>

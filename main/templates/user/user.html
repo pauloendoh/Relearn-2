@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+{% load vstatic %}
+
+{% block body %}
+<script>var username = "{{ user.username }}"</script>
+
+<div class="container mt-6">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            {% include 'user/profileHeader.html' %}
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6">
+            {% include 'user/timeline.html' %}
+        </div>
+        <div class="col-lg-3"></div>
+    </div>
+</div>
+
+{% endblock %}

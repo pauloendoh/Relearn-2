@@ -1,0 +1,10 @@
+{% load vstatic %}
+
+<script src="{% vstatic 'js/components/statusComponent.js' %}"></script>
+
+<div id="status-feed">
+
+    <user-link v-for="rating in ratings"  :user-link="rating" :key="rating.id" :auth-user="authUser" class="mb-3">
+    </user-link>
+</div>
+<script src="{% vstatic 'js/index/statusFeed.js' %}"></script>

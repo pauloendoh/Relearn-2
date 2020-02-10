@@ -1,0 +1,15 @@
+{% load vstatic %}
+
+<div id="see-later">
+    <h4 class="mb-4">Ver depois
+        <template v-if="userResources.length > 0 ">
+            ({[ userResources.length ]})
+        </template>
+    </h4>
+
+
+    <link-summary v-for="userResource in userResources" v-bind:user-resource.sync="userResource"
+        v-bind:key="userResource.id" class='mb-3'>
+    </link-summary>
+</div>
+<script src="{% vstatic 'js/path/seeLater.js' %}"></script>

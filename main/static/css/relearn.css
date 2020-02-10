@@ -1,0 +1,341 @@
+body {
+  background: #e9e9e9;
+}
+
+a {
+  color: #169f8d;
+}
+
+a:hover {
+  color: #087062;
+}
+
+.main-btn {
+  background: #169f8d;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 2px;
+}
+
+.main-btn:hover {
+  background: #087062;
+  color: white;
+}
+
+.modal-content {
+  border-radius: 2px;
+}
+
+.br-2 {
+  border-radius: 0.5em;
+}
+
+.br-3 {
+  border-radius: 1em;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.mt-6 {
+  margin-top: 5em !important;
+}
+
+.align-center {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.align-end {
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
+.justify-between {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+.flex-between {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 100%;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-footer {
+  border-top: none;
+}
+
+[data-toggle~="dropdown"] {
+  cursor: pointer;
+}
+
+.dropdown-item:active {
+  background-color: transparent;
+}
+
+#navbar {
+  -webkit-box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+          box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+  background: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 0.5em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+#navbar #logo {
+  font-size: 25px;
+  font-weight: 600;
+  color: black;
+}
+
+#navbar #logo:hover {
+  text-decoration: none;
+}
+
+#navbar .div-search-box {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  min-width: 250px;
+  width: 70%;
+}
+
+#navbar .div-search-box .search-box {
+  font-size: 14px;
+  border-radius: 2px;
+  border: none;
+  background: #ececec;
+}
+
+#navbar .div-search-box .fa-search {
+  position: absolute;
+  right: 10px;
+  color: #8a8a8a;
+}
+
+#navbar .third-column {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#auth-modal {
+  margin-top: 100px;
+}
+
+#auth-modal .modal-content {
+  width: 400px;
+}
+
+#auth-modal .modal-content .modal-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#auth-modal .modal-content .modal-body .btn {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  color: white;
+  font-weight: 700;
+  width: 300px;
+  border-radius: 2px;
+}
+
+#auth-modal .modal-content .modal-body .btn img {
+  height: 25px;
+  width: 25px;
+  border-radius: 25px;
+  padding: 5px;
+  background: white;
+}
+
+#auth-modal .modal-content .modal-body .btn .text {
+  margin-left: 1em;
+}
+
+#auth-modal .modal-content .modal-body .google-btn {
+  background: #4285f4;
+}
+
+#auth-modal .modal-content .modal-body .google-btn:hover {
+  background: #2664c9;
+}
+
+#auth-modal .modal-content .modal-body form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#auth-modal .modal-content .modal-body form .form-control {
+  width: 300px;
+  background: lightgray;
+  border-radius: 2px;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+
+#auth-modal .modal-content .modal-body form input[type="submit"] {
+  background: #169f8d;
+}
+
+#auth-modal .modal-content .modal-body form input[type="submit"]:hover {
+  background: #087062;
+}
+
+#auth-modal .modal-content .modal-body .change-auth {
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+#add-resource-modal .modal-dialog {
+  margin-top: 5em;
+}
+
+#add-resource-modal h6 {
+  font-weight: 700;
+}
+
+#add-resource-modal .modal-body {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  font-size: 14px;
+}
+
+#add-resource-modal .modal-body .form-group {
+  margin-bottom: 10px;
+}
+
+#add-resource-modal .modal-body .form-control {
+  font-size: 14px;
+}
+
+#add-resource-modal .modal-body #url {
+  resize: none;
+}
+
+#add-resource-modal .modal-body #rating {
+  width: 100px;
+}
+
+#add-resource-modal .modal-footer {
+  padding-top: 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+}
+
+#user-dropdown-menu {
+  font-size: 24px;
+}
+
+#corner-message {
+  position: fixed;
+  left: 50%;
+  bottom: 25px;
+  background-color: #151515e0;
+  padding: 0.5em 1em;
+  color: white;
+  border-radius: 2px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  -webkit-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+/*# sourceMappingURL=relearn.css.map */

@@ -1,0 +1,76 @@
+{% load vstatic %}
+
+<div id="add-resource-modal" class="modal fade" tabindex="-1" role="dialog" v-cloak>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title">Salvar recurso</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+            </div>
+            <div class="modal-body">
+                <form id="add-resource-form" v-on:submit.prevent="save()" v-on:keyup.ctrl.enter="save()">
+                    <div class="form-group">
+                        <label for="url">URL* <span v-if="!urlIsValid" style="color: red;">Inválida!</span></label>
+                        <auto-textarea id="url" v-model="url" class="form-control" @input="autofill()" required
+                            style="resize: none;" placeholder="Ex: https://www.alura.com.br/cursos-online-mobile">
+                        </auto-textarea>
+                    </div>
+                    <div class="d-flex">
+                        <div class="form-group">
+                            <!-- <label for="rating">Nota</label>
+                            <input id="rating" v-model="rating" type="number" min="1" max="5" class="form-control"> -->
+
+                            <label>Nota</label>
+                            <star-ratings v-bind:rating.sync="rating" style="min-height: 25px;"></star-ratings>
+                            <!-- <div class="d-flex" style="font-size: 20px;">
+                                <div v-for="option in ratingOptions" class="pointer"
+                                    v-on:click="changeRating(option.value)" 
+                                    v-on:mouseover="hoverRating = option.value"
+                                    v-on:mouseleave="hoverRating = null"
+                                    data-toggle="tooltip"
+                                    v-bind:title="option.tooltip"
+                                    >
+                                    <template v-if="hoverRating > 0">
+                                        <i v-if="hoverRating >= option.value" class="fas fa-star"></i>
+                                        <i v-else class="far fa-star"></i>
+                                    </template>
+                                    <template v-else>
+                                        <i v-if="rating >= option.value" class="fas fa-star"></i>
+                                        <i v-else class="far fa-star"></i>
+                                    </template>
+                              
+                                </div>
+                            </div> -->
+                        </div>
+                        <div class="form-group ml-5">
+                            <label>Salvar</label>
+                            <div v-if="seeLater" @click="seeLater = false" 
+                            class="d-flex align-center pointer" style="min-height: 25px; font-size: 15px;">
+                                <i class="fas fa-bookmark"></i>
+                                <div class="ml-1">Ver depois</div>                              
+                            </div>
+                            <div v-else @click="seeLater = true" 
+                            class="d-flex align-center pointer" style="min-height: 25px; font-size: 15px;">
+                                <i class="far fa-bookmark"></i>
+                                <div class="ml-1">Ver depois</div>                              
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Título</label>
+                        <auto-textarea v-model="title" class="form-control" style="resize: none;" />
+                    </div>
+
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <input type="submit" form="add-resource-form" value="Salvar" class="btn main-btn" />
+            </div>
+        </div>
+    </div>
+</div>
+<script src="{% vstatic 'js/addResourceModal.js' %}"></script>

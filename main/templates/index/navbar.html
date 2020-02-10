@@ -1,0 +1,46 @@
+{% load vstatic %}
+<div id="navbar" v-cloak class="fixed-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-8 d-flex align-center justify-between">
+                <a id="logo" href="{% url 'renderIndex' %}">Relearn</a>
+                <div class="div-search-box">
+                    <input class="search-box form-control" placeholder="O que você quer aprender?" />
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+            <div class="col-4 d-flex align-center justify-between">
+                <div>
+                    {% if user.is_authenticated %}
+                    <button v-on:click="openAddResourceModal()" class="btn main-btn" data-toggle="tooltip" data-placement="bottom"
+                        data-html="true" title="Salvar recurso <b>(q)</b>" style="height: 33px;width: 45px;">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                    {% endif %}
+                </div>                
+                {% if request.user.is_authenticated %}
+                <div id="user-dropdown-menu" class="dropdown dropdown d-flex align-center">
+                    <i id="dropdownMenuButton" class="fas fa-user" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false"></i>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        <a class="dropdown-item" href="{% url 'renderUserPage' request.user.username %}">Meu Perfil</a>
+                        <a class="dropdown-item" href="{% url 'renderPath' %}?p=SL">Ver Depois</a>
+                        <a class="dropdown-item" href="{% url 'logout' %}">Sair</a>
+                    </div>
+                </div>
+                {% else  %}
+                <button class="btn main-btn" @click="openAuthModal()">
+                    Entrar 
+                </button>
+                {% endif %}
+            </div>
+ 
+            <div class="col-3 third-column">
+                
+            </div>
+        </div>
+    </div>
+ 
+
+</div>
+<script src="{% vstatic 'js/navbar.js' %}"></script>
